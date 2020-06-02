@@ -16,6 +16,7 @@ public class UserService {
         u1.setEmail("Tuan@123.com");
         u1.setName("Tuấn");
         u1.setAge(18);
+        users.add(u1);
 
         User u2 = new User();
         u2.setAccount("binh");
@@ -23,6 +24,7 @@ public class UserService {
         u2.setEmail("Binh@123.com");
         u2.setName("Bình");
         u2.setAge(17);
+        users.add(u2);
 
         User u3 = new User();
         u3.setAccount("duc");
@@ -30,12 +32,12 @@ public class UserService {
         u3.setEmail("Duc@123.com");
         u3.setName("Đức");
         u3.setAge(19);
+        users.add(u3);
     }
 
     public static User checkLogin (Login login){
         for (User u: users){
-            if (u.getAccount().equals(login.getAccount())
-                && u.getAccount().equals(login.getPassword())){
+            if (u.getAccount().equals(login.getAccount()) && u.getPassword().equals(login.getPassword())){
                 return u;
             }
         }

@@ -6,8 +6,10 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
@@ -28,28 +30,28 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
 
     //Thymeleaf Configuration
     @Bean
-    public SpringResourceTemplateResolver templateResolver() {
-        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+    public ViewResolver templateResolver() {
+        InternalResourceViewResolver templateResolver = new InternalResourceViewResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/views/");
+        templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".jsp");
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UTF-8");
+/*        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");*/
         return templateResolver;
     }
 
-    @Bean
+/*    @Bean
     public TemplateEngine templateEngine() {
         TemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;
-    }
+    }*/
 
-    @Bean
+  /*  @Bean
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
-    }
+    }*/
 }
